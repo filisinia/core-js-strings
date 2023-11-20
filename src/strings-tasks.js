@@ -402,10 +402,25 @@ function reverseWords(str) {
  *   invertCase('JavaScript is Fun') => 'jAVAsCRIPT IS fUN'
  *   invertCase('12345') => '12345'
  */
-function invertCase(/* str */) {
-  throw new Error('Not implemented');
-}
+function invertCase(str) {
+  const words = str.split(' ');
 
+  const changedWords = words.map((word) => {
+    let changedWord = '';
+    for (let i = 0; i < word.length; i += 1) {
+      if (word[i] >= 'A' && word[i] <= 'Z') {
+        changedWord += word[i].toLowerCase();
+      } else if (word[i] >= 'a' && word[i] <= 'z') {
+        changedWord += word[i].toUpperCase();
+      } else {
+        changedWord += word[i];
+      }
+    }
+    return changedWord;
+  });
+
+  return changedWords.join(' ');
+}
 /**
  * Returns the result of string template and given parameters firstName and lastName.
  * Please do not use concatenation, use template string :
@@ -419,8 +434,8 @@ function invertCase(/* str */) {
  *   getStringFromTemplate('John','Doe') => 'Hello, John Doe!'
  *   getStringFromTemplate('Chuck','Norris') => 'Hello, Chuck Norris!'
  */
-function getStringFromTemplate(/* firstName, lastName */) {
-  throw new Error('Not implemented');
+function getStringFromTemplate(firstName, lastName) {
+  return `Hello, ${firstName} ${lastName}!`;
 }
 
 /**
@@ -433,8 +448,8 @@ function getStringFromTemplate(/* firstName, lastName */) {
  *   extractNameFromTemplate('Hello, John Doe!') => 'John Doe'
  *   extractNameFromTemplate('Hello, Chuck Norris!') => 'Chuck Norris'
  */
-function extractNameFromTemplate(/* value */) {
-  throw new Error('Not implemented');
+function extractNameFromTemplate(value) {
+  return value.slice(7, -1);
 }
 
 /**
@@ -448,8 +463,8 @@ function extractNameFromTemplate(/* value */) {
  *   unbracketTag('<span>') => 'span'
  *   unbracketTag('<a>') => 'a'
  */
-function unbracketTag(/* str */) {
-  throw new Error('Not implemented');
+function unbracketTag(str) {
+  return str.slice(1, -1);
 }
 
 /**
@@ -467,8 +482,8 @@ function unbracketTag(/* str */) {
  *   ],
  *   'info@gmail.com' => ['info@gmail.com']
  */
-function extractEmails(/* str */) {
-  throw new Error('Not implemented');
+function extractEmails(str) {
+  return str.split(';');
 }
 
 /**
@@ -488,9 +503,20 @@ function extractEmails(/* str */) {
  *
  */
 function encodeToRot13(/* str */) {
+  // const newString = str.split('').map((elem) => {
+  //   const codeNumber = elem.charCodeAt(elem);
+
+  //   if (codeNumber < 65 || (codeNumber > 90 && codeNumber < 97) || codeNumber > 122) {
+  //     return String.fromCharCode(codeNumber);
+  //   } else if (codeNumber < 78 || (codeNumber > 97 && codeNumber < 110)) {
+  //     return String.fromCharCode(codeNumber + 13);
+  //   }
+  //   return String.fromCharCode(codeNumber - 13);
+  // });
+
+  // return newString.join('');
   throw new Error('Not implemented');
 }
-
 /**
  * Returns playid card id.
  *
