@@ -317,19 +317,12 @@ function containsSubstring(str, substring) {
  *   countVowels('XYZ') => 1
  */
 function countVowels(str) {
-  const vovels = ['a', 'e', 'i', 'o', 'u', 'y'];
+  const vowels = ['a', 'e', 'i', 'o', 'u', 'y'];
   const arrOfLetters = str.toLowerCase().split('');
-  let counter = 0;
+  const vowelsOfStr = arrOfLetters.filter((letter) => vowels.includes(letter));
 
-  for (const letter of arrOfLetters) {
-    if (vovels.includes(letter)) {
-      counter += 1;
-    }
-  }
-
-  return counter;
+  return vowelsOfStr.length;
 }
-
 /**
  * Returns true if the string is a palindrome; otherwise false.
  * https://en.wikipedia.org/wiki/Palindrome
@@ -343,10 +336,23 @@ function countVowels(str) {
  *   isPalindrome('apple') => false
  *   isPalindrome('No lemon, no melon') => true
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  let strToCompare = str;
+  if (str.includes('!')) {
+    strToCompare = strToCompare.replace(/!/g, '');
+  }
+  if (str.includes('?')) {
+    strToCompare = strToCompare.replace(/\?/g, '');
+  }
+  if (str.includes(' ')) {
+    strToCompare = strToCompare.replace(/ /g, '');
+  }
+  if (str.includes(',')) {
+    strToCompare = strToCompare.replace(/,/g, '');
+  }
+  const strInitial = strToCompare.toLowerCase();
+  return strInitial === strInitial.split('').reverse().join('');
 }
-
 /**
  * Find the longest word in the sentence. If there are multiple longest words,
  * the function returns the first one encountered.
