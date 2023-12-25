@@ -502,21 +502,30 @@ function extractEmails(str) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  // const newString = str.split('').map((elem) => {
-  //   const codeNumber = elem.charCodeAt(elem);
+function encodeToRot13(str) {
+  const newString = str.split('').map((elem) => {
+    const codeNumber = elem.charCodeAt(0);
 
-  //   if (codeNumber < 65 || (codeNumber > 90 && codeNumber < 97) || codeNumber > 122) {
-  //     return String.fromCharCode(codeNumber);
-  //   } else if (codeNumber < 78 || (codeNumber > 97 && codeNumber < 110)) {
-  //     return String.fromCharCode(codeNumber + 13);
-  //   }
-  //   return String.fromCharCode(codeNumber - 13);
-  // });
+    if (
+      codeNumber < 65 ||
+      (codeNumber > 90 && codeNumber < 97) ||
+      codeNumber > 122
+    ) {
+      return String.fromCharCode(codeNumber);
+    }
+    if (
+      codeNumber < 78 ||
+      (codeNumber > 90 && codeNumber < 110) ||
+      (codeNumber > 96 && codeNumber < 109)
+    ) {
+      return String.fromCharCode(codeNumber + 13);
+    }
+    return String.fromCharCode(codeNumber - 13);
+  });
 
-  // return newString.join('');
-  throw new Error('Not implemented');
+  return newString.join('');
 }
+
 /**
  * Returns playid card id.
  *
@@ -527,7 +536,7 @@ function encodeToRot13(/* str */) {
  *  'A♥','2♥','3♥','4♥','5♥','6♥','7♥','8♥','9♥','10♥','J♥','Q♥','K♥',
  *  'A♠','2♠','3♠','4♠','5♠','6♠','7♠','8♠','9♠','10♠','J♠','Q♠','K♠'
  *
- * (see https://en.wikipedia.org/wiki/Standard_52-card_deck)
+ * (see https://en.пшwikipedia.org/wiki/Standard_52-card_deck)
  * Function returns the zero-based index of specified card in the initial deck above.
  *
  * @param {string} value - The card value.
